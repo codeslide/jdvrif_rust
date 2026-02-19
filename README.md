@@ -43,13 +43,12 @@ For platforms such as ***X-Twitter*** & ***Tumblr***, which have small size limi
 
 ```console
 
-user1@mx:~/Downloads/jdvrif-main/src$ sudo apt install libsodium-dev libturbojpeg0-dev pkg-config 
-user1@mx:~/Downloads/jdvrif-main/src$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-user1@mx:~/Downloads/jdvrif-main/src$ cargo build --release
-user1@mx:~/Downloads/jdvrif-main/src$ Build complete. Binary at 'target/release/jdvrif'.
-user1@mx:~/Downloads/jdvrif-main/src$ sudo cp target/release/jdvrif /usr/bin 
-
-user1@mx:~/Desktop$ jdvrif 
+$ sudo apt install libsodium-dev libturbojpeg0-dev pkg-config 
+$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+$ cargo build --release
+$ Build complete. Binary at 'target/release/jdvrif'.
+$ sudo cp target/release/jdvrif /usr/bin 
+$ jdvrif 
 
 Usage: jdvrif conceal [-b|-r] <cover_image> <secret_file>
        jdvrif recover <cover_image>  
