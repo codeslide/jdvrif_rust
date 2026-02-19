@@ -1,5 +1,5 @@
 # jdvrif_rust
-This is an experimental Rust port of my C++ steganography tool [***jdvrif***](https://cleasbycode.co.uk/jdvrif/)  
+This is an experimental Rust port of my C++ steganography tool [***jdvrif***](https://github.com/CleasbyCode/jdvrif)  
 
 A fast steganography command-line tool used for embedding and extracting any file type via a **JPG** image.  
 
