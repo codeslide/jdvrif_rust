@@ -31,7 +31,7 @@ Usage: jdvrif conceal [-b|-r] <cover_image> <secret_file>
        jdvrif recover <cover_image>  
        jdvrif --info
 
-user1@mx:~/Desktop$ jdvrif conceal your_cover_image.jpg your_secret_file.doc
+$ jdvrif conceal your_cover_image.jpg your_secret_file.doc
 
 Platform compatibility for output image:-
 
