@@ -23,7 +23,9 @@ For increased storage capacity and better security, your embedded data file is c
 $ sudo apt install libsodium-dev libturbojpeg0-dev pkg-config 
 $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 $ cargo build --release
-$ Build complete. Binary at 'target/release/jdvrif'.
+
+Build complete. Binary at 'target/release/jdvrif'.
+
 $ sudo cp target/release/jdvrif /usr/bin 
 $ jdvrif 
 
