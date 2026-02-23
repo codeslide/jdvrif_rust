@@ -54,7 +54,7 @@ Important: Keep your PIN safe, so that you can extract the hidden file.
 
 Complete!
         
-user1@mx:~/Desktop$ jdvrif recover jrif_129462.jpg
+$ jdvrif recover jrif_129462.jpg
 
 PIN: *******************
 
