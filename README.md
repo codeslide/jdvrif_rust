@@ -24,16 +24,16 @@ $ sudo apt install libsodium-dev libturbojpeg0-dev pkg-config
 $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 $ cargo build --release
 
-Build complete. Binary at 'target/release/jdvrif'.
+Build complete. Binary at 'target/release/jdvrif-rs'.
 
-$ sudo cp target/release/jdvrif /usr/bin 
-$ jdvrif 
+$ sudo cp target/release/jdvrif-rs /usr/bin 
+$ jdvrif-rs 
 
-Usage: jdvrif conceal [-b|-r] <cover_image> <secret_file>
-       jdvrif recover <cover_image>  
-       jdvrif --info
+Usage: jdvrif-rs conceal [-b|-r] <cover_image> <secret_file>
+       jdvrif-rs recover <cover_image>  
+       jdvrif-rs --info
 
-$ jdvrif conceal your_cover_image.jpg your_secret_file.doc
+$ jdvrif-rs conceal your_cover_image.jpg your_secret_file.doc
 
 Platform compatibility for output image:-
 
@@ -54,7 +54,7 @@ Important: Keep your PIN safe, so that you can extract the hidden file.
 
 Complete!
         
-$ jdvrif recover jrif_129462.jpg
+$ jdvrif-rs recover jrif_129462.jpg
 
 PIN: *******************
 
@@ -72,7 +72,7 @@ jdvrif ***conceal*** mode ***platform*** options:
  
 "***-b***" To create compatible "*file-embedded*" ***JPG*** images for posting on the ***Bluesky*** platform, you must use the ***-b*** option with ***conceal*** mode.
   ```console
-  $ jdvrif conceal -b my_image.jpg hidden.doc
+  $ jdvrif-rs conceal -b my_image.jpg hidden.doc
   ```
  These images are only compatible for posting on ***Bluesky***. Your embedded data file will be removed if posted on a different platform.
  
@@ -127,7 +127,7 @@ https://github.com/user-attachments/assets/b4c72ea7-40e3-49b0-89aa-ae2dd8ccccb9
 
    "***-r***" - To create compatible "*file-embedded*" ***JPG*** images for posting on the ***Reddit*** platform, you must use the ***-r*** option with ***conceal*** mode.
    ```console
-  $ jdvrif conceal -r my_image.jpg secret.mp3 
+  $ jdvrif-rs conceal -r my_image.jpg secret.mp3 
    ```
    From the ***Reddit*** site, select "***Create Post***" followed by "***Images & Video***" tab, to attach and post your ***JPG*** image.
   
