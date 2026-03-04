@@ -88,6 +88,7 @@ def downloading(bot, update):
         dir_rnd_nam_link = dir_down + '\\' + rnd_nam_link
         newFile = bot.get_file(document_id)
         bot.send_chat_action(chat_id=update.message.chat_id, action=telegram.ChatAction.TYPING)
+        update.message.reply_text('↙️ فایل مورد نظر در حال آپلود بر روی سرور mega میبباشد, لطفا صبور باشید...')
         newFile.download(down_file)
         time.sleep(2)
         bot.send_chat_action(chat_id=update.message.chat_id, action=telegram.ChatAction.UPLOAD_DOCUMENT)
@@ -121,11 +122,10 @@ def downloading(bot, update):
         down_photo = dir_down + '\\' + rnd_nam_photo
         newFile = bot.get_file(photo_id)
         bot.send_chat_action(chat_id=update.message.chat_id, action=telegram.ChatAction.TYPING)
-        update.message.reply_text('↖️ فایل مورد نظر در حال دانلود از روی تلگرام بات میبباشد, لطفا صبور باشید...')
+        update.message.reply_text('↙️ فایل مورد نظر در حال آپلود بر روی سرور mega میبباشد, لطفا صبور باشید...')
         newFile.download(down_photo)
         time.sleep(2)
         bot.send_chat_action(chat_id=update.message.chat_id, action=telegram.ChatAction.UPLOAD_PHOTO)
-        update.message.reply_text('↙️ فایل مورد نظر در حال آپلود بر روی سرور mega میبباشد, لطفا صبور باشید...')
         subprocess.call('mega-put -c "{0}"'.format(down_photo), shell=True)
         subprocess.call('mega-export -a "%s" > %s' %(rnd_nam_photo, dir_rnd_nam_link), shell=True)
         lines = open(dir_rnd_nam_link, "r+").readlines()
@@ -156,6 +156,7 @@ def downloading(bot, update):
         down_video = dir_down + '\\' + rnd_nam_video
         newFile = bot.get_file(video_id)
         bot.send_chat_action(chat_id=update.message.chat_id, action=telegram.ChatAction.TYPING)
+        update.message.reply_text('↙️ فایل مورد نظر در حال آپلود بر روی سرور mega میبباشد, لطفا صبور باشید...')
         newFile.download(down_video)
         time.sleep(2)
         bot.send_chat_action(chat_id=update.message.chat_id, action=telegram.ChatAction.UPLOAD_VIDEO)
@@ -190,11 +191,10 @@ def downloading(bot, update):
         down_audio = dir_down + '\\' + rnd_nam_audio
         newFile = bot.get_file(audio_id)
         bot.send_chat_action(chat_id=update.message.chat_id, action=telegram.ChatAction.TYPING)
-        update.message.reply_text('↖️ فایل مورد نظر در حال دانلود از روی تلگرام بات میبباشد, لطفا صبور باشید...')
+        update.message.reply_text('↙️ فایل مورد نظر در حال آپلود بر روی سرور mega میبباشد, لطفا صبور باشید...')
         newFile.download(down_audio)
         time.sleep(2)
         bot.send_chat_action(chat_id=update.message.chat_id, action=telegram.ChatAction.UPLOAD_AUDIO)
-        update.message.reply_text('↙️ فایل مورد نظر در حال آپلود بر روی سرور mega میبباشد, لطفا صبور باشید...')
         subprocess.call('mega-put -c "{0}"'.format(down_audio), shell=True)
         subprocess.call('mega-export -a "%s" > %s' % (rnd_nam_audio, dir_rnd_nam_link), shell=True)
         lines = open(dir_rnd_nam_link, "r+").readlines()
